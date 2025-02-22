@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry, My Love</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 90%;
+            width: 400px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        h1 {
+            font-size: 2em;
+            color: #ff4757;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite;
+            color: red;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .tears {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: lightblue;
+            border-radius: 50%;
+            animation: fall 3s infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(500px); opacity: 0; }
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I'm Sorry, My Love 💔</h1>
+        <p>My Love,</p>
+        <p>Mujhe sach mein bahut afsos hai agar meri kisi baat ya behavior se aapko dukh pahunchaa ho. Yeh meri galti thi, aur main dil se maafi maangti hoon.</p>
+        <p>Aap meri zindagi ka sabse keemti hissa hain, aur aapki muskurahat mere liye sabse zaroori hai.</p>
+        <p>Main kabhi nahi chahti ki hamare beech koi bhi galatfehmi ya takleef aaye. Please mujhe maaf kar dijiye aur ek mauka dijiye sab kuch wapas pehle jaisa khoobsurat banane ka.
+            Main wada kar rahi hoon ki aage se poori koshish karungi ki aapko kabhi bhi dukh na ho. Aapse baat karna, aapke saath hasna, aur har lamha jeena mere liye sabse khoobsurat ehsaas hai, aur main ise kabhi khona nahi chahti.
+             Aapki maafi mere liye bohot maayne rakhti hai. Umeed hai ki hum phir se wahi pyaar aur khushi ke saath aage badhenge.
+            
+            Sirf aapke liye,
+            Deepu</p>
+        <p><strong>Sirf aapke liye,</strong><br>Deepu ❤️</p>
+        <div class="heart">❤️</div>
+    </div>
+
+    <!-- Audio Tag -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let music = document.getElementById("bg-music");
+
+            // Try to play automatically
+            music.play().then(() => {
+                console.log("Music is playing automatically 🎶");
+            }).catch(() => {
+                console.log("Autoplay blocked! Click anywhere to start music.");
+            });
+
+            // Backup click event (If autoplay fails)
+            document.addEventListener("click", function() {
+                if (music.paused) {
+                    music.play();
+                    console.log("Music started after user interaction 🎶");
+                }
+            });
+        });
+
+        function createTear() {
+            let tear = document.createElement('div');
+            tear.className = 'tears';
+            tear.style.left = Math.random() * 100 + 'vw';
+            tear.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(tear);
+            setTimeout(() => tear.remove(), 5000);
+        }
+        setInterval(createTear, 500);
+    </script>
+</body>
+</html>
